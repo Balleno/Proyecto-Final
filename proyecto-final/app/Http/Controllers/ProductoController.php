@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Auth;
 
 class ProductoController extends Controller
 {
@@ -16,11 +18,31 @@ class ProductoController extends Controller
         $datos['tiendas']['amazon']['nombreTienda'] = "AMAZON";
         return view('navegacion.productos', $datos);
     }
+    public function listar(){
+        $datos['productos']=array();
+        foreach(DB::select('select * from lista_seguimiento where id_usuario = '. Auth::id()) as $producto){
+            array_push($datos['productos'], $producto);
+        }
+        return view('navegacion.lista', $datos);
+    }
+
+    public function borrar(Request $request){
+        $datos['productos']=array();
+        $id_producto = $request->input('id_seguimiento');
+        DB::delete('delete from lista_seguimiento where id = ?',[$id_producto]);
+        foreach(DB::select('select * from lista_seguimiento where id_usuario = '. Auth::id()) as $producto){
+            array_push($datos['productos'], $producto);
+        }
+        return view('navegacion.lista', $datos);
+    }
 
     public function seguir(Request $request){
+    
         $datos['tiendas']=array();
-        $texto_buscar = $request->input('urlproducto');
-        print_r($texto_buscar);
+        $id_usuario = Auth::id();
+        $url_producto = $request->input('urlproducto');
+        $data=array('id_usuario'=>$id_usuario,"url_producto"=>$url_producto);
+        DB::table('lista_seguimiento')->insert($data);
 
         return view('navegacion.productos', $datos);
     }

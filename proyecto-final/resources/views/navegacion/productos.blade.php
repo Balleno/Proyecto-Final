@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>Aqui van los productos :)</h1>
+            <h1>Búsqueda de productos</h1>
             <form method="POST" action="{{ url('productos/buscar') }}" id="formulariobusqueda" class="form">
             @csrf
 

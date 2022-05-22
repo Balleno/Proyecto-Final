@@ -33,13 +33,19 @@ Route::get('logout', array(
 Route::get('/',
 function ()
 {
-return view('welcome');
+return view('auth.login');
 });
 
 Route::get('productos',
   function ()
     {
     return view('navegacion/productos');
+    });
+
+Route::get('lista',
+  function ()
+    {
+    return view('navegacion/lista');
     });
 
 
@@ -53,3 +59,7 @@ Route::resource('productos', ProductoController::class, ['parameters'
 Route::post('productos/buscar', [ProductoController::class, 'store']);
 
 Route::post('productos/seguir', [ProductoController::class, 'seguir']);
+
+Route::get('lista', [ProductoController::class, 'listar']);
+
+Route::post('productos/borrar', [ProductoController::class, 'borrar']);
