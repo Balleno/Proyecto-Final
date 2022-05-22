@@ -1,9 +1,3 @@
-<!doctype html>
-<html>
-   <head>
-      <title>My Login Page</title>
-   </head>
-   <body>
       <
       {{ Form::open(array('url' => 'login')) }}
       <h1>Login</h1>
