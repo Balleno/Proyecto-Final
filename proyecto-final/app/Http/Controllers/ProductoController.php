@@ -10,10 +10,10 @@ class ProductoController extends Controller
 {
     public function index(){
         $datos['tiendas']=array();
+
         return view('navegacion.productos', $datos);
     }
     public function show(Request $request, $texto_buscar){
-        //print_r($request->input('busqueda'));
         $datos['tiendas']['amazon'] = self::amazon($texto_buscar);
         $datos['tiendas']['amazon']['nombreTienda'] = "AMAZON";
         return view('navegacion.productos', $datos);
@@ -23,6 +23,7 @@ class ProductoController extends Controller
         foreach(DB::select('select * from lista_seguimiento where id_usuario = '. Auth::id()) as $producto){
             array_push($datos['productos'], $producto);
         }
+
         return view('navegacion.lista', $datos);
     }
 
@@ -33,11 +34,11 @@ class ProductoController extends Controller
         foreach(DB::select('select * from lista_seguimiento where id_usuario = '. Auth::id()) as $producto){
             array_push($datos['productos'], $producto);
         }
+
         return view('navegacion.lista', $datos);
     }
 
     public function seguir(Request $request){
-    
         $datos['tiendas']=array();
         $id_usuario = Auth::id();
         $url_producto = $request->input('urlproducto');
@@ -49,7 +50,6 @@ class ProductoController extends Controller
 
     public function store(Request $request){
         $datos['tiendas']=array();
-        //print_r($request->input('busqueda'));
         $texto_buscar = $request->input('busqueda');
 
         $datos['tiendas']['amazon'] = self::amazon(str_replace(' ', '+', $texto_buscar));
@@ -77,24 +77,19 @@ class ProductoController extends Controller
             $html->load($html->save());
 
             if (!empty($html)) /* comprombamos que el documento html no está vacío */{
-                /* (".s-image") */
                 /* Aquí buscamos el precio en el documento html */
                 if ($html->find(".a-price-whole", 0) != null) {
                     $results['price'] = $html->find(".a-price-whole", 0)->plaintext;
                     $results['imagen'] = $html->find('img[data-image-index]',0)->src;
                     $results['urlproducto'] = "https://www.amazon.es" . $html->find('.a-link-normal',0)->href;
-                    //$results['urlproducto'] = $html->find('img[data-image-index]',0)->src;  
                 }            
             }
 
             /* limpiamos la memoria para que no nos agote los recursos */
             $html->clear(); 
             unset($html);
-
-            /* imprimimos los resultados aquí */
-            //print_r($results);
-
         }
+
         return $results;
     }
 
@@ -111,7 +106,6 @@ class ProductoController extends Controller
             $results = array();
         
             if (!empty($html)) /* comprombamos que el documento html no está vacío */{
-                /* (".s-image") */
                 /* Aquí buscamos el precio en el documento html */
                 if($html->find(".srp-results", 0)->find(".s-item__price", 0) != null) {
                     $results['price'] = $html->find(".srp-results", 0)->find(".s-item__price", 0)->plaintext;
@@ -124,13 +118,9 @@ class ProductoController extends Controller
             /* limpiamos la memoria para que no nos agote los recursos */
             $html->clear(); 
             unset($html);
-            
-            /* imprimimos los resultados aquí */
-            //print_r($results);
             }
+            
             return $results;
         }
         
     }
-
-    
