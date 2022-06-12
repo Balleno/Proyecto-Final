@@ -50,7 +50,7 @@ class ProductoController extends Controller
     public function eliminar(Request $request){
         $datos['usuarios']=array();
         $id_usuario = $request->input('id_usuario');
-        DB::delete('delete from user where id = ?',[$id_usuario]);
+        DB::delete('delete from users where id = ?',[$id_usuario]);
         foreach(DB::select('select * from users') as $usuario){
             array_push($datos['usuarios'], $usuario);
         }
