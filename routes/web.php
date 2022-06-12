@@ -68,6 +68,6 @@ Route::post('productos/seguir', [ProductoController::class, 'seguir']);
 
 Route::get('lista', [ProductoController::class, 'listar']);
 
-Rout::get('admin', [ProductoController::class, 'administrar']);
+Route::get('admin', [ProductoController::class, 'administrar']);
 
 Route::post('productos/borrar', [ProductoController::class, 'borrar']);
