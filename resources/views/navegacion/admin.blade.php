@@ -3,51 +3,30 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <h1>Búsqueda de productos</h1>
-            <form method="POST" action="{{ url('productos/buscar') }}" id="formulariobusqueda" class="form">
-            @csrf
-
-            @method('POST')
-            <div class="form-group">
-                <input type="text" id="busqueda" name="busqueda">
-            </div>
-                <button type="submit" class="btn btn-primary">
-                    Buscar
-                </button>
-            </form>
-            @if(isset($tiendas))
-                @foreach($tiendas as $tienda)
-                    @if(isset($tienda['imagen']))
-                    <form method="POST" action="{{ url('productos/seguir') }}">
+        <div class="col-md-8">
+            <h1>Lista de Seguimiento</h1>
+                    @foreach($productos as $producto)       
+                    <form method="POST" action="{{ url('productos/borrar') }}">
                     @csrf
 
                     @method('POST')
                         <table class="tablaproducto">
+                            <tr><a href={{ $producto->url_producto }} target="_blank">{{ $producto->url_producto }}</a></tr>
                             <tr>
-                               <td><img src={{ $tienda['imagen'] }} ></td>
-                            <td>{{ $tienda['nombreTienda'] }}</td>
-                            <td>{{ $tienda['price'] }}</td>
-                            <td>
                                 <button type="submit" class="btn btn-primary">
-                                    Seguir
+                                    Borrar
                                 </button>
-                            </td>
-			    </tr>
+                            </tr>
                         </table>
 
                         <div class="form-group">
-                            <input type="text" name="urlproducto" value= {{ $tienda['urlproducto'] }} hidden>
+                            <input type="text" name="id_seguimiento" value= {{ $producto->id }} hidden>
                         </div>
-
-                        
                     </form>
-                        
-                    @endif
-                @endforeach
-            @endif
-            
+                    @endforeach
+                    
         </div>
     </div>
 </div>
+
 @endsection
