@@ -55,7 +55,7 @@ class ProductoController extends Controller
             array_push($datos['usuarios'], $usuario);
         }
 
-        return view('navegacion.administrar', $datos);
+        return view('navegacion.admin', $datos);
     }
 
     public function seguir(Request $request){
