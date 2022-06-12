@@ -51,7 +51,7 @@ class ProductoController extends Controller
         $datos['usuarios']=array();
         $id_usuario = $request->input('id_usuario');
         DB::delete('delete from user where id = ?',[$id_usuario]);
-        foreach(DB::select('select * from users where id = '. Auth::id()) as $producto){
+        foreach(DB::select('select * from users') as $usuario){
             array_push($datos['usuarios'], $usuario);
         }
 
