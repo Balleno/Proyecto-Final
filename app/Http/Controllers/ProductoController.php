@@ -29,7 +29,7 @@ class ProductoController extends Controller
 
     public function administrar(){
         $datos['usuarios']=array();
-        foreach(DB::select('select name from users') as $usuario){
+        foreach(DB::select('select * from users') as $usuario){
             array_push($datos['usuarios'], $usuario);
         }
 
