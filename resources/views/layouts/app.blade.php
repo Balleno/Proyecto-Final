@@ -71,6 +71,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('lista') }}">{{ __('Lista') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('admin') }}">{{ __('Administrar') }}</a>
+                            </li>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

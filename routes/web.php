@@ -48,6 +48,12 @@ Route::get('lista',
     return view('navegacion/lista');
     });
 
+Route::get('admin',
+    function ()
+      {
+      return view('navegacion/admin');
+      });
+
 
 Auth::routes();
 
