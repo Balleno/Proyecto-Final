@@ -6,15 +6,15 @@
         <div class="col-md-8">
             <h1>Lista de Usuarios</h1>
                     @foreach($usuarios as $usuario)       
-                    <form method="POST" action="{{ url('productos/borrar') }}">
+                    <form method="POST" action="{{ url('usuarios/eliminar') }}">
                     @csrf
 
                     @method('POST')
                         <table class="tablausuario">
                             <tr>Nombre usuario: {{ $usuario->name }} </tr>
                             <tr>
-                                <button type="submit" class="btn btn-primary">
-                                    Borrar
+                                <button type="submit" class="btn btn-danger">
+                                    Eliminar
                                 </button>
                             </tr>
                         </table>

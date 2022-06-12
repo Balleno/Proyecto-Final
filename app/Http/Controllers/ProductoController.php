@@ -47,6 +47,17 @@ class ProductoController extends Controller
         return view('navegacion.lista', $datos);
     }
 
+    public function eliminar(Request $request){
+        $datos['usuarios']=array();
+        $id_usuario = $request->input('id_usuario');
+        DB::delete('delete from user where id = ?',[$id_usuario]);
+        foreach(DB::select('select * from users where id = '. Auth::id()) as $producto){
+            array_push($datos['usuarios'], $usuario);
+        }
+
+        return view('navegacion.administrar', $datos);
+    }
+
     public function seguir(Request $request){
         $datos['tiendas']=array();
         $id_usuario = Auth::id();

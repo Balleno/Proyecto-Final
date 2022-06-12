@@ -71,3 +71,5 @@ Route::get('lista', [ProductoController::class, 'listar']);
 Route::get('admin', [ProductoController::class, 'administrar']);
 
 Route::post('productos/borrar', [ProductoController::class, 'borrar']);
+
+Route::post('usuarios/eliminar', [ProductoController::class, 'eliminar']);
