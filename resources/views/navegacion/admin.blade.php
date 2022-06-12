@@ -11,7 +11,7 @@
 
                     @method('POST')
                         <table class="tablausuario">
-                            <tr><a href={{ $usuario->name }} target="_blank">{{ $usuario->name }}</a></tr>
+                            <tr>Nombre usuario: {{ $usuario->name }} </tr>
                             <tr>
                                 <button type="submit" class="btn btn-primary">
                                     Borrar
