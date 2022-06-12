@@ -71,7 +71,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('lista') }}">{{ __('Lista') }}</a>
                             </li>
-                            if (Auth::attempt(['email' => $email, 'password' => $password, 'administrador' => 1]))
+                            @if (Auth::attempt(['email' => $email, 'password' => $password, 'administrador' => 1]))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('admin') }}">{{ __('Administrar') }}</a>
                             </li>
