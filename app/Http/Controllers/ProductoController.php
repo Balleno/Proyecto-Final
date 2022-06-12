@@ -27,6 +27,15 @@ class ProductoController extends Controller
         return view('navegacion.lista', $datos);
     }
 
+    public function administrar(){
+        $datos['usuarios']=array();
+        foreach(DB::select('select name from users') as $usuario){
+            array_push($datos['usuarios'], $usuario);
+        }
+
+        return view('navegacion.admin', $datos);
+    }
+
     public function borrar(Request $request){
         $datos['productos']=array();
         $id_producto = $request->input('id_seguimiento');

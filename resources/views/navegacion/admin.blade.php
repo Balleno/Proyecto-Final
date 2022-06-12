@@ -4,14 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>Lista de Seguimiento</h1>
-                    @foreach($productos as $producto)       
+            <h1>Lista de Usuarios</h1>
+                    @foreach($usuarios as $usuario)       
                     <form method="POST" action="{{ url('productos/borrar') }}">
                     @csrf
 
                     @method('POST')
-                        <table class="tablaproducto">
-                            <tr><a href={{ $producto->url_producto }} target="_blank">{{ $producto->url_producto }}</a></tr>
+                        <table class="tablausuario">
+                            <tr><a href={{ $usuario->nombre }} target="_blank">{{ $usuario->nombre }}</a></tr>
                             <tr>
                                 <button type="submit" class="btn btn-primary">
                                     Borrar
@@ -20,7 +20,7 @@
                         </table>
 
                         <div class="form-group">
-                            <input type="text" name="id_seguimiento" value= {{ $producto->id }} hidden>
+                            <input type="text" name="id_usuario" value= {{ $usuario->id }} hidden>
                         </div>
                     </form>
                     @endforeach
