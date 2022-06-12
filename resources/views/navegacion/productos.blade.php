@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <h1>Búsqueda de productos</h1>
             <form method="POST" action="{{ url('productos/buscar') }}" id="formulariobusqueda" class="form">
             @csrf
@@ -25,15 +25,15 @@
                     @method('POST')
                         <table class="tablaproducto">
                             <tr>
-                                <img src={{ $tienda['imagen'] }} >
-                            </tr>
-                            <tr>{{ $tienda['nombreTienda'] }}</tr>
-                            <tr>{{ $tienda['price'] }}</tr>
-                            <tr>
+                               <td><img src={{ $tienda['imagen'] }} ></td>
+                            <td>{{ $tienda['nombreTienda'] }}</td>
+                            <td>{{ $tienda['price'] }}</td>
+                            <td>
                                 <button type="submit" class="btn btn-primary">
                                     Seguir
                                 </button>
-                            </tr>
+                            </td>
+			    </tr>
                         </table>
 
                         <div class="form-group">
