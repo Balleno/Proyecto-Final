@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <h1>Lista de Seguimiento</h1>
                     @foreach($productos as $producto)       
                     <form method="POST" action="{{ url('productos/borrar') }}">

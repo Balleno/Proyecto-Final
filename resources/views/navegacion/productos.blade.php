@@ -26,15 +26,15 @@
                     @method('POST')
                         <table class="tablaproducto">
                             <tr>
-                               <td><img src={{ $tienda['imagen'] }} ></td>
-                            <td>{{ $tienda['nombreTienda'] }}</td>
-                            <td>{{ $tienda['price'] }}</td>
-                            <td>
-                                <button type="submit" class="btn btn-primary">
-                                    Seguir
-                                </button>
-                            </td>
-			    </tr>
+                                <td><img src={{ $tienda['imagen'] }} ></td>
+                                <td>{{ $tienda['nombreTienda'] }}</td>
+                                <td>{{ $tienda['price'] }}</td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary">
+                                        Seguir
+                                    </button>
+                                </td>
+			                </tr>
                         </table>
 
                         <div class="form-group">

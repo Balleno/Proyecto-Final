@@ -54,6 +54,13 @@ Route::get('admin',
       return view('navegacion/admin');
       });
 
+Route::get('preguntas',
+      function ()
+        {
+        return view('navegacion/preguntas');
+        });
+
+
 
 Auth::routes();
 

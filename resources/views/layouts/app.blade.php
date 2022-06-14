@@ -71,6 +71,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('lista') }}">{{ __('Lista') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('preguntas') }}">{{ __('FAQ') }}</a>
+                            </li>
                             @if( Auth::user()->administrador == 1)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('admin') }}">{{ __('Administrar') }}</a>
